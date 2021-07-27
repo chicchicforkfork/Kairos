@@ -5,17 +5,24 @@ FetchContent_Declare(gtest
 )
 FetchContent_MakeAvailable(gtest)
 
-add_executable(test_EMPTY
-    test_EMPTY.cpp)
+add_executable(kairos_unit_test
+    test_kairos.cpp)
 
-target_include_directories(test_EMPTY
+
+target_include_directories(kairos_unit_test
 PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}
-    ${EMPTY_SOURCE_DIR}/include
+    ${kairos_SOURCE_DIR}/include
 )
 
-target_link_libraries(test_EMPTY
+target_link_libraries(kairos_unit_test
 PRIVATE
     gtest_main
-    pthread
+    kairos
+)
+
+include(GoogleTest)
+gtest_discover_tests(kairos_unit_test
+  PROPERTIES
+    LABELS "unit test"
 )

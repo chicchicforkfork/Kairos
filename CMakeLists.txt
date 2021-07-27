@@ -1,4 +1,4 @@
-project(EMPTY)
+project(kairos)
 
 set(ORG_BUILD_TESTING ${BUILD_TESTING})
 set(BUILD_TESTING OFF)
@@ -8,25 +8,30 @@ set(CMAKE_CXX_COMPILER /usr/bin/c++)
 set(CMAKE_CXX_FLAGS "-m64 -std=c++17")
 add_compile_options(-W -Wall -g -fpermissive)
 
+include(FetchContent)
+
 include_directories(include)
+find_package(fmt REQUIRED)
 
 ###############################
 # for hpp
 ###############################
-#add_library(EMPTY INTERFACE)
-#target_sources(EMPTY INTERFACE EMPTY.hpp)
-#target_include_directories (EMPTY
-#INTERFACE
-#    ${CMAKE_CURRENT_SOURCE_DIR}/include)
+add_library(kairos SHARED)
+target_sources(kairos 
+PRIVATE
+    src/kairos.cpp
+PUBLIC 
+    include/kairos.h
+)
 
-###############################
-# for cpp (.so)
-###############################
-#add_library(EMPTY SHARED EMPTY.cpp)
-#install(TARGETS ${PROJECT_NAME} LIBRARY DESTINATION lib)
-#target_include_directories (EMPTY
-#PUBLIC
-#    ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories (kairos
+PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+# auto link library fmt
+target_link_libraries(kairos
+INTERFACE
+    fmt)
 
 ###############################
 # for doxygen
@@ -37,7 +42,7 @@ if (DOXYGEN_FOUND)
     set(DOXYGEN_OUT ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile)
     configure_file(${DOXYGEN_OUT} @ONLY)
     add_custom_target(
-	EMPTY_doc_doxygen ALL
+        kairos_doxygen ALL
         COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
         COMMENT "Generating API documentation with Doxygen"
@@ -48,7 +53,7 @@ endif (DOXYGEN_FOUND)
 
 
 ###############################
-# for gtest
+# for testfmt
 ###############################
 set(BUILD_TESTING ${ORG_BUILD_TESTING})
 if (BUILD_TESTING)
