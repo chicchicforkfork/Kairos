@@ -1,5 +1,5 @@
-#ifndef __SOSO_KAIROS_H__
-#define __SOSO_KAIROS_H__
+#ifndef __KAIROS_H__
+#define __KAIROS_H__
 
 #include <assert.h>
 #include <bits/stdc++.h>
@@ -12,7 +12,7 @@
 #include <sys/time.h>
 #include <vector>
 
-namespace soso {
+namespace chkchk {
 
 class KairosStack;
 
@@ -87,6 +87,6 @@ public:
   struct timeval getAvg();
 };
 
-}; // namespace soso
+}; // namespace chkchk
 
 #endif
