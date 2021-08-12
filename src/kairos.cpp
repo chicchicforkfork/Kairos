@@ -20,7 +20,7 @@ Kairos::~Kairos() {
   }
 }
 
-const string Kairos::desc() { //
+const string Kairos::desc() const { //
   return _desc;
 }
 
@@ -48,7 +48,7 @@ void Kairos::end() { //
 #endif
 }
 
-struct timeval &Kairos::diff() { //
+const struct timeval &Kairos::diff() const { //
   return _diff;
 }
 

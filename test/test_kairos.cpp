@@ -21,7 +21,7 @@ TEST(kairos_test, normal) {
     kairo.end();
     kstack.addKairos(kairo);
   }
-  cout << kstack.toString();
+  cout << kstack;
 }
 
 TEST(kairos_test, limit_stack_size) {
@@ -38,7 +38,7 @@ TEST(kairos_test, limit_stack_size) {
     kairo.end();
     kstack.addKairos(kairo);
   }
-  cout << kstack.toString();
+  cout << kstack;
 }
 
 TEST(kairos_test, rvalue) {
@@ -49,5 +49,5 @@ TEST(kairos_test, rvalue) {
     Kairos kairos("kairos#" + to_string(i), &kstack);
     usleep(10);
   }
-  cout << kstack.toString();
+  cout << kstack;
 }

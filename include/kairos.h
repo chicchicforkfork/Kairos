@@ -4,6 +4,7 @@
 #include <assert.h>
 #include <bits/stdc++.h>
 #include <fmt/format.h>
+#include <iostream>
 #include <list>
 #include <mutex>
 #include <stdbool.h>
@@ -37,8 +38,8 @@ public:
   ~Kairos();
   void begin();
   void end();
-  struct timeval &diff();
-  const std::string desc();
+  const struct timeval &diff() const;
+  const std::string desc() const;
 };
 
 /**
@@ -78,6 +79,10 @@ public:
   void addKairos(Kairos &kairos);
 
   const std::string toString();
+  friend std::ostream &operator<<(std::ostream &os, const KairosStack &kstack) {
+    os << kstack.toString() << "\n";
+    return os;
+  }
   size_t checkedCount();
   size_t pointSize();
   void monitoring(std::function<void(KairosStack &)> f);
