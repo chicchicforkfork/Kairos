@@ -46,8 +46,10 @@ TEST(kairos_test, rvalue) {
   vector<Kairos> kairos;
 
   for (int i = 0; i < 10; i++) {
-    Kairos kairos("kairos#" + to_string(i), &kstack);
-    usleep(10);
+    Kairos k1("kairos---#" + to_string(i), &kstack);
+    { //
+      usleep(1000);
+    }
   }
   cout << kstack;
 }

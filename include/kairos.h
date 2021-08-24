@@ -79,7 +79,7 @@ public:
   void addKairos(Kairos &kairos);
 
   const std::string toString();
-  friend std::ostream &operator<<(std::ostream &os, const KairosStack &kstack) {
+  friend std::ostream &operator<<(std::ostream &os, KairosStack &kstack) {
     os << kstack.toString() << "\n";
     return os;
   }
