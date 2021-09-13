@@ -2,8 +2,8 @@
 #define __KAIROS_H__
 
 #include <assert.h>
-#include <bits/stdc++.h>
 #include <fmt/format.h>
+#include <functional>
 #include <iostream>
 #include <list>
 #include <mutex>
