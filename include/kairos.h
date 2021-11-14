@@ -13,8 +13,6 @@
 #include <sys/time.h>
 #include <vector>
 
-namespace chkchk {
-
 class KairosStack;
 
 /**
@@ -91,7 +89,5 @@ public:
   struct timeval getTotal();
   struct timeval getAvg();
 };
-
-}; // namespace chkchk
 
 #endif

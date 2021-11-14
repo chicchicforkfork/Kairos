@@ -1,6 +1,5 @@
 #include "kairos.h"
 
-using namespace chkchk;
 using namespace std;
 
 Kairos::Kairos(const string &desc, KairosStack *kstack) {

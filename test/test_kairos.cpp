@@ -5,7 +5,6 @@
 #include <vector>
 
 using namespace std;
-using namespace chkchk;
 
 TEST(kairos_test, normal) {
   KairosStack kstack("Test", 100);
